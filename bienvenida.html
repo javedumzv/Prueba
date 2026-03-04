@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .bienvenida-container {
+            width: 340px;
+            margin: 100px auto;
+            padding: 32px 24px 28px 24px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+            text-align: center;
+        }
+        .logo-fam {
+            margin-bottom: 16px;
+        }
+        .bienvenida-mensaje {
+            font-size: 1.3em;
+            color: #e75480;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .bienvenida-usuario {
+            font-size: 1.1em;
+            color: #6c63ff;
+            margin-bottom: 18px;
+        }
+        .volver-btn {
+            display: inline-block;
+            padding: 10px 28px;
+            background: linear-gradient(90deg, #f8bbd0 0%, #fce4ec 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px 0 rgba(248,187,208,0.15);
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .volver-btn:hover {
+            background: #e75480;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="bienvenida-container">
+        <div class="logo-fam">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="28" fill="#f8bbd0" stroke="#e75480" stroke-width="3"/>
+                <path d="M30 40 Q22 32 30 24 Q38 32 30 40Z" fill="#e75480"/>
+                <circle cx="30" cy="24" r="5" fill="#fff"/>
+                <circle cx="30" cy="24" r="3" fill="#e75480"/>
+            </svg>
+        </div>
+        <div class="bienvenida-mensaje">¡Bienvenido!</div>
+        <div class="bienvenida-usuario">Javier</div>
+        <div>¡Nos alegra tenerte de vuelta en Fundación Ayuda Mutua!</div>
+        <a href="index.html" class="volver-btn">Aceptar</a>
+    </div>
+</body>
+</html>

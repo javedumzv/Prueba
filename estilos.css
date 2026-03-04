@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    /* Degradado rosa pastel */
+    background: linear-gradient(135deg, #f8bbd0 0%, #fce4ec 50%, #f9f7d9 100%);
+}
+.login-container {
+    width: 340px;
+    margin: 100px auto;
+    padding: 28px 24px 24px 24px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+}
+.empresa {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.logo-fam {
+    margin-bottom: 10px;
+}
+.empresa h2 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #e75480;
+    letter-spacing: 1px;
+}
+.empresa span {
+    font-size: 0.95em;
+    color: #888;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #e75480;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 12px;
+    border: 1px solid #f8bbd0;
+    border-radius: 6px;
+    background: #f7f7fa;
+    font-size: 1em;
+    transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+    border: 1.5px solid #e75480;
+    outline: none;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, #f8bbd0 0%, #fce4ec 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px 0 rgba(248,187,208,0.15);
+    transition: background 0.2s;
+}
+input[type="submit"]:hover {
+    background: #e75480;
+    color: #fff;
+    transition: background 0.2s;
+}

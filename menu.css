@@ -1,0 +1,194 @@
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #b2f7ef 0%, #f6f7d7 100%);
+    display: flex;
+}
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 2px 0 16px 0 rgba(62, 198, 224, 0.10);
+    padding: 0 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.menu-header {
+    text-align: center;
+    padding: 32px 16px 18px 16px;
+    border-bottom: 1px solid #e0fcff;
+}
+.menu-header h1 {
+    font-size: 1.1em;
+    margin: 8px 0 0 0;
+    color: #3ec6e0;
+    letter-spacing: 1px;
+}
+.menu-header span {
+    font-size: 1em;
+    color: #5eaaa8;
+}
+.menu {
+    margin-top: 18px;
+    flex: 1;
+}
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu > ul > li {
+    margin-bottom: 6px;
+    position: relative;
+}
+.menu a {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    color: #222;
+    text-decoration: none;
+    background: linear-gradient(90deg, #e0fcff 0%, #b2f7ef 100%);
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+.menu a:hover, .menu .has-submenu:hover > a {
+    background: #3ec6e0;
+    color: #fff;
+}
+.has-submenu {
+    position: relative;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 170px;
+    z-index: 10;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 8px 0 rgba(62,198,224,0.10);
+    border-radius: 8px;
+    padding: 8px 0;
+}
+.has-submenu:hover .submenu {
+    display: block;
+}
+.submenu li {
+    margin: 0;
+}
+.submenu a {
+    padding: 10px 18px;
+    background: none;
+    color: #3ec6e0;
+    font-weight: normal;
+    border-radius: 0;
+}
+.submenu a:hover {
+    background: #b2f7ef;
+    color: #222;
+}
+.main-content {
+    margin-left: 260px;
+    padding: 48px 32px;
+    flex: 1;
+}
+.evento-form {
+    max-width: 420px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 28px 22px 22px 22px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px 0 rgba(62,198,224,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.evento-form label {
+    font-weight: bold;
+    color: #3ec6e0;
+    margin-bottom: 2px;
+}
+.evento-form input[type="text"],
+.evento-form input[type="date"],
+.evento-form input[type="number"],
+.evento-form textarea {
+    padding: 8px;
+    border: 1px solid #b2f7ef;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #f7fafd;
+    resize: vertical;
+}
+.evento-form textarea {
+    min-height: 60px;
+}
+.evento-form button {
+    margin-top: 10px;
+    padding: 10px;
+    background: linear-gradient(90deg, #3ec6e0 0%, #b2f7ef 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.evento-form button:hover {
+    background: #3ec6e0;
+}
+.tabla-eventos {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 10px;
+    font-size: 0.97em;
+}
+.tabla-eventos th, .tabla-eventos td {
+    border: 1px solid #b2f7ef;
+    padding: 8px 6px;
+    text-align: left;
+}
+.tabla-eventos th {
+    background: #3ec6e0;
+    color: #fff;
+}
+.button-print, .button-pdf {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 8px 18px;
+    background: linear-gradient(90deg, #3ec6e0 0%, #b2f7ef 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.button-print:hover, .button-pdf:hover {
+    background: #3ec6e0;
+}
+@media (max-width: 700px) {
+    .sidebar {
+        width: 100vw;
+        min-height: auto;
+        position: static;
+        box-shadow: none;
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 24px 8px;
+    }
+    .submenu {
+        left: 0;
+        top: 100%;
+        min-width: 140px;
+        position: static;
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="menu-header">
+            <svg width="48" height="48" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="28" fill="#b2f7ef" stroke="#3ec6e0" stroke-width="3"/>
+                <path d="M30 40 Q22 32 30 24 Q38 32 30 40Z" fill="#3ec6e0"/>
+                <circle cx="30" cy="24" r="5" fill="#fff"/>
+                <circle cx="30" cy="24" r="3" fill="#3ec6e0"/>
+            </svg>
+            <h1>Fundación Ayuda Mutua</h1>
+            <span>Menú Principal</span>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li class="has-submenu">
+                    <a href="#">Usuarios</a>
+                    <ul class="submenu">
+                        <li><a href="#">Nuevo Usuario</a></li>
+                        <li><a href="#">Editar Usuario</a></li>
+                        <li><a href="#">Eliminar Usuario</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">Eventos</a>
+                    <ul class="submenu">
+                        <li><a href="#">Crear Evento</a></li>
+                        <li><a href="#">Editar Evento</a></li>
+                        <li><a href="#">Cancelar Evento</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Donativos</a></li>
+                <li><a href="#">Invitados</a></li>
+                <li><a href="#">Expositores</a></li>
+                <li><a href="#">Asignación de Fondos</a></li>
+                <li class="has-submenu">
+                    <a href="#">Reportes</a>
+                    <ul class="submenu">
+                        <li><a href="#">Eventos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Salir</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <!-- Aquí aparecerán los formularios o el contenido que indiques -->
+        <h2>Bienvenido al sistema</h2>
+        <p>Selecciona una opción del menú para comenzar.</p>
+        <!-- Agrega esto dentro de <div class="main-content"> en menu.html -->
+<div id="formulario-evento" style="display:none;">
+    <h2>Crear Evento</h2>
+    <form id="crearEventoForm" class="evento-form">
+        <label for="evento-id">ID:</label>
+        <input type="text" id="evento-id" name="evento-id" readonly>
+
+        <label for="nombre">Nombre del evento:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="lugar">Lugar:</label>
+        <input type="text" id="lugar" name="lugar" required>
+
+        <label for="participantes">Cantidad de participantes:</label>
+        <input type="number" id="participantes" name="participantes" min="1" required>
+
+        <label for="expositores">Expositores:</label>
+        <textarea id="expositores" name="expositores" rows="3" required></textarea>
+
+        <label for="materiales">Materiales:</label>
+        <textarea id="materiales" name="materiales" rows="3" required></textarea>
+
+        <label for="alimentos">Alimentos:</label>
+        <textarea id="alimentos" name="alimentos" rows="3" required></textarea>
+
+        <button type="submit">Guardar Evento</button>
+    </form>
+</div>
+    <!-- Reporte de eventos -->
+<div id="reporte-eventos" style="display:none;">
+    <h2>Reporte de Eventos</h2>
+    <form id="form-reporte-eventos" class="evento-form" style="max-width:600px;">
+        <label for="fecha-inicio">Fecha de Inicio:</label>
+        <input type="date" id="fecha-inicio" name="fecha-inicio" required>
+        <label for="fecha-final">Fecha Final:</label>
+        <input type="date" id="fecha-final" name="fecha-final" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="tabla-eventos" style="margin-top:24px; display:none;">
+        <div style="text-align:right; margin-bottom:10px;">
+            <button onclick="window.print()" class="evento-form button-print">Imprimir</button>
+            <button class="evento-form button-pdf">Guardar PDF</button>
+        </div>
+        <table class="tabla-eventos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del evento</th>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Cantidad de participantes</th>
+                    <th>Expositores</th>
+                    <th>Materiales</th>
+                    <th>Alimentos</th>
+                </tr>
+            </thead>
+            <tbody id="eventos-tbody">
+                <!-- Aquí se insertan los eventos -->
+            </tbody>
+        </table>
+    </div>
+</div>
+    </div>
+    <script>
+let eventoId = 1;
+
+document.querySelectorAll('.submenu a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (this.textContent.trim() === "Crear Evento") {
+            e.preventDefault();
+            mostrarFormularioEvento();
+        }
+    });
+});
+
+function mostrarFormularioEvento() {
+    // Oculta otros posibles formularios o mensajes
+    document.querySelectorAll('.main-content > *:not(#formulario-evento)').forEach(el => el.style.display = 'none');
+    // Muestra el formulario
+    const formDiv = document.getElementById('formulario-evento');
+    formDiv.style.display = 'block';
+    // Asigna el ID automático
+    document.getElementById('evento-id').value = eventoId++;
+}
+</script>
+<script>
+const eventosEjemplo = [
+    {
+        id: 1,
+        nombre: "Jornada de Salud",
+        fecha: "2025-09-10",
+        lugar: "Centro Comunitario",
+        participantes: 50,
+        expositores: "Dr. López, Lic. Pérez",
+        materiales: "Folletos, Equipo médico",
+        alimentos: "Agua, Fruta, Sándwiches"
+    },
+    {
+        id: 2,
+        nombre: "Taller de Manualidades",
+        fecha: "2025-09-15",
+        lugar: "Casa de la Cultura",
+        participantes: 30,
+        expositores: "Mtra. García",
+        materiales: "Papel, Tijeras, Pegamento",
+        alimentos: "Jugos, Galletas"
+    },
+    {
+        id: 3,
+        nombre: "Conferencia Motivacional",
+        fecha: "2025-09-20",
+        lugar: "Auditorio Municipal",
+        participantes: 100,
+        expositores: "Ing. Ramírez",
+        materiales: "Proyector, Micrófono",
+        alimentos: "Café, Pan dulce"
+    },
+    {
+        id: 4,
+        nombre: "Feria de la Salud",
+        fecha: "2025-09-25",
+        lugar: "Parque Central",
+        participantes: 200,
+        expositores: "Dra. Torres, Lic. Díaz",
+        materiales: "Carpas, Mesas, Folletos",
+        alimentos: "Agua, Fruta"
+    },
+    {
+        id: 5,
+        nombre: "Capacitación de Voluntarios",
+        fecha: "2025-09-28",
+        lugar: "Oficinas FAM",
+        participantes: 20,
+        expositores: "Equipo FAM",
+        materiales: "Manual, Plumas",
+        alimentos: "Box lunch"
+    }
+];
+
+// Mostrar formulario de reporte al hacer clic en Reportes > Eventos
+document.querySelectorAll('.submenu a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (this.textContent.trim() === "Eventos" && this.closest('.has-submenu').querySelector('a').textContent.trim() === "Reportes") {
+            e.preventDefault();
+            mostrarReporteEventos();
+        }
+    });
+});
+
+function mostrarReporteEventos() {
+    document.querySelectorAll('.main-content > *').forEach(el => el.style.display = 'none');
+    document.getElementById('reporte-eventos').style.display = 'block';
+    document.getElementById('tabla-eventos').style.display = 'none';
+    document.getElementById('form-reporte-eventos').reset();
+}
+
+document.getElementById('form-reporte-eventos').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const inicio = document.getElementById('fecha-inicio').value;
+    const fin = document.getElementById('fecha-final').value;
+    const tbody = document.getElementById('eventos-tbody');
+    tbody.innerHTML = "";
+
+    // Filtrar eventos por fecha
+    const filtrados = eventosEjemplo.filter(ev => ev.fecha >= inicio && ev.fecha <= fin);
+    if (filtrados.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;">No hay eventos en ese periodo.</td></tr>`;
+    } else {
+        filtrados.forEach(ev => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${ev.id}</td>
+                    <td>${ev.nombre}</td>
+                    <td>${ev.fecha}</td>
+                    <td>${ev.lugar}</td>
+                    <td>${ev.participantes}</td>
+                    <td>${ev.expositores}</td>
+                    <td>${ev.materiales}</td>
+                    <td>${ev.alimentos}</td>
+                </tr>
+            `;
+        });
+    }
+    document.getElementById('tabla-eventos').style.display = 'block';
+});
+
+// Botón PDF solo muestra alerta (puedes integrar librerías como jsPDF si lo deseas)
+document.querySelector('.button-pdf').addEventListener('click', function() {
+    alert('Funcionalidad de guardar en PDF no implementada en este prototipo.');
+});
+</script>
+</body>
+</html>
